@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: compute
+  jmx:
+    enabled: false
+#spring.cloud.config.uri=http://localhost:2222/config-service
+server:
+  port: 8092
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka-server/eureka/
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${random.value}
+      contextPath: compute
+      appVersion: 2.0.0
+    statusPageUrlPath: /compute${management.context-path}/info
+    healthCheckUrlPath: /compute${management.context-path}/health
+    homePageUrlPath: compute
+    endpoints:
+      enabled: false
+      info:
+        enabled: true
+      health:
+        enabled: true
+
+
+management:
+  context-path: /manage
+
+
+
+info:
+  app:
+    version: 1.0.0
