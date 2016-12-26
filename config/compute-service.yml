@@ -1,6 +1,6 @@
 spring:
   application:
-    name: compute
+    name: compute-service
   jmx:
     enabled: false
 #spring.cloud.config.uri=http://localhost:2222/config-service
@@ -15,11 +15,11 @@ eureka:
   instance:
     metadataMap:
       instanceId: ${spring.application.name}:${random.value}
-      contextPath: compute
+      contextPath: compute-service
       appVersion: 2.0.0
-    statusPageUrlPath: /compute${management.context-path}/info
-    healthCheckUrlPath: /compute${management.context-path}/health
-    homePageUrlPath: compute
+    statusPageUrlPath: /compute-service${management.context-path}/info
+    healthCheckUrlPath: /compute-service${management.context-path}/health
+    homePageUrlPath: compute-service
     endpoints:
       enabled: false
       info:
